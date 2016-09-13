@@ -1,0 +1,13 @@
+#!/bin/sh
+# devtmpfs does not get automounted for initramfs
+export PATH
+/bin/busybox --install -s /bin
+mount -t devtmpfs devtmpfs /dev
+mount -t proc proc /proc
+mount -t sysfs sysfs /sys
+mount -t ubifs /dev/ubi0_0 /mnt || true
+
+exec 0</dev/console
+exec 1>/dev/console
+exec 2>/dev/console
+exec /sbin/init $*

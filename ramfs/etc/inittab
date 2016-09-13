@@ -1,0 +1,7 @@
+ttyGS0::askfirst:/bin/sh # gadget serial
+ttyS0::askfirst:/bin/sh # GENERIC_SERIAL
+tty0::askfirst:/bin/sh # framebuffer console
+
+# now run any rc scripts
+console::sysinit:-/etc/init.d/rcS
+
